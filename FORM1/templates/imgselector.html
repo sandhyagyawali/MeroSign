@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> Image Slider</title>
+
+  <style>
+  body{
+    background: #26334b;
+  }
+  .main{
+    width: 600px;
+    margin: 100px auto;
+  }
+  .main .holder ul{
+    position: relative;
+    list-style-type: none ;
+    padding: 0;
+    height: 400px;
+    width: 100%;
+  }
+  .main .holder ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    opacity: 0;
+    border: 1px solid white;
+    transition: opacity .7s ease;
+  }
+  .main .holder ul li:first-child{
+    opacity: 1;
+  }
+  .main .holder ul li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slides{
+    position: absolute;
+    left: 15%;
+    top: 6.5%;
+    width: 10%;
+    display: grid;
+    grid-template-rows: (4,1fr);
+    /*-grid-template-columns: repeat(4,1fr);*/
+    grid-gap: 20px;
+  }
+  .slides a{
+    border: 2px solid white;
+    height: 100px;
+
+  }
+  .slides a img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .main .holder ul li:target{
+    opacity: 1;
+  }
+  .slides a:hover{
+
+    border: 2px solid yellow;
+    opacity: .3;
+  }.btn
+{
+position: absolute;
+top: 75%;
+left: 45%;
+width:150px;
+height:45px;
+border:none;
+outline:none;
+background:purple;
+font-size:18px;
+cursor:pointer;
+text-transform:uppercase;
+color:white;
+border-radius:5px;
+transition:.4s;
+}
+.btn:hover
+{
+opacity: .5;
+}
+  @media(max-width:1200px){
+
+    .main{
+      width:80%;
+      margin:60px 30px 60px auto;
+
+      }
+      .slides{
+        display: relative;
+        left: 2%;
+        top: 5%;
+        width: 10%;
+        grid-template-columns:(3,1fr);
+        grid-gap:10px;
+      }
+  }
+  @media (max-width :370px) {
+    .main{
+      margin : 60px 10px 60px auto;
+    }
+    .slides{
+      width: 12%;
+    }
+
+  }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="holder">
+      <ul>
+        <li id="slide1"> <img src="{% static 'image/a.jpg' %}" alt=""></li>
+        <li id="slide2"><img src="{% static 'image/b.jpg' %}" alt=""></li>
+        <li id="slide3"><img src="{% static 'image/c.jpg' %}" alt=""></li>
+        <li id="slide4"><img src="{% static 'image/d.jpg' %}" alt=""></li>
+      </ul>
+    </div>
+    <div class="slides">
+      <a href="#slide1"><img src="{% static 'image/a.jpg' %}" alt=""></a>
+      <a href="#slide2"><img src="{% static 'image/b.jpg' %}" alt=""></a>
+      <a href="#slide3"><img src="{% static 'image/c.jpg' %}" alt=""></a>
+      <a href="#slide4"><img src="{% static 'image/d.jpg' %}" alt=""></a>
+    </div>
+  </div>
+  <a href="#">
+    <input type="submit" class="btn" value="Save Image">
+  </a>
+
+</body>
+</html>
